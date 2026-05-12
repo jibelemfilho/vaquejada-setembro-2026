@@ -144,6 +144,12 @@ body{font-family:'Barlow',sans-serif;background:var(--marrom);color:var(--creme)
 .btn-nova{width:100%;background:transparent;border:1px solid rgba(201,145,42,.3);color:var(--dourado);font-family:'Barlow Condensed',sans-serif;font-size:15px;letter-spacing:.1em;text-transform:uppercase;padding:12px;border-radius:4px;cursor:pointer;margin-top:10px;transition:background .2s;}
 .btn-nova:hover{background:rgba(201,145,42,.08);}
 
+
+/* MODO EM BREVE */
+.btn-disabled{opacity:.38;cursor:not-allowed;pointer-events:none;filter:grayscale(.5);}
+.aviso-em-breve{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(245,237,216,.04);border:1px dashed rgba(201,145,42,.25);border-radius:4px;padding:11px;margin-top:10px;font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.12em;color:rgba(245,237,216,.4);text-transform:uppercase;}
+.aviso-em-breve span{font-size:16px;}
+
 /* FOOTER */
 footer{background:var(--marrom);border-top:1px solid rgba(201,145,42,.12);padding:2rem 1.5rem;text-align:center;}
 .foot-txt{font-size:13px;color:rgba(245,237,216,.3);letter-spacing:.05em;}
@@ -314,11 +320,12 @@ footer{background:var(--marrom);border-top:1px solid rgba(201,145,42,.12);paddin
       </div>
 
       <p class="msg-erro" id="msg-erro"></p>
-      <button class="btn-reservar btn-reservar-local" id="btn-reservar" onclick="confirmarReserva()">Confirmar reserva</button>
-      <a class="btn-wpp" href="#" onclick="abrirWppDireto(event)">
+      <button class="btn-reservar btn-reservar-local btn-disabled" id="btn-reservar" onclick="confirmarReserva()">Confirmar reserva</button>
+      <div class="btn-wpp btn-disabled">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Falar no WhatsApp
-      </a>
+      </div>
+      <div class="aviso-em-breve"><span>🔒</span> Inscrições em breve</div>
     </div>
 
     <div id="tela-sucesso">
@@ -326,10 +333,11 @@ footer{background:var(--marrom);border-top:1px solid rgba(201,145,42,.12);paddin
       <div class="suc-titulo">Reservado!</div>
       <p class="suc-msg">Sua senha foi reservada com sucesso.<br>Clique abaixo para confirmar pelo WhatsApp.</p>
       <div class="resumo-card" id="resumo-container"></div>
-      <a class="btn-wpp" id="btn-wpp-sucesso" href="#">
+      <div class="btn-wpp btn-disabled" id="btn-wpp-sucesso">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Confirmar pelo WhatsApp
-      </a>
+      </div>
+      <div class="aviso-em-breve"><span>🔒</span> Inscrições em breve</div>
       <button class="btn-nova" onclick="novaReserva()">Fazer nova reserva</button>
     </div>
   </div>
@@ -340,7 +348,7 @@ footer{background:var(--marrom);border-top:1px solid rgba(201,145,42,.12);paddin
 </footer>
 
 <script>
-const WPP = '5588996322991';
+const WPP = '5588999999999';
 const CONFIG = {
   local: { total: 200, ocupadas: new Set() },
   fora:  { total: 100, ocupadas: new Set() }
